@@ -1,0 +1,33 @@
+doctype html 
+html 
+    head  
+        block head 
+            title Natours | #{title} 
+            meta(charset='UTF-8') 
+            meta(name='viewport', content='width=device-width, initial-scale=1.0')
+            link(rel='stylesheet', href='/css/style.css') 
+            link(rel='shortcut icon' type='image/png', href='/img/favicon.png')  
+            script(src="https://js.stripe.com/v3/")
+            link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Lato:300,300i,700') 
+            
+  
+    
+    body  
+        // Header   
+        include _header   
+        
+        block content 
+              
+                   
+        // Footer 
+        include _footer   
+        
+        script(src='/dist/js/index.js')
+        
+
+        
+
+
+          
+        
+        

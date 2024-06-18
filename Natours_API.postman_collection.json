@@ -1,0 +1,1194 @@
+{
+	"info": {
+		"_postman_id": "8f55baeb-2447-403e-b3db-63d1d2d42c7b",
+		"name": "Natours_API",
+		"description": "Natours API documentation. Routes are protected by a jwt token that is issued when a user logs in. The jwt token is placed after the Bearer in 'Bearer Token' Authorization for verification.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29523020"
+	},
+	"item": [
+		{
+			"name": "Tours",
+			"item": [
+				{
+					"name": "All Tours",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/tours",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"tours"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "All Tours",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:3000/api/v1/tours",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"tours"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Easy Tours",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/tours/easy-tours",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"tours",
+								"easy-tours"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Distance From Tours",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/tours/distances/34.1111745,-118.11139/unit/km",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"tours",
+								"distances",
+								"34.1111745,-118.11139",
+								"unit",
+								"km"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Tours With Sorting Query",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/tours?price[lte]=700",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"tours"
+							],
+							"query": [
+								{
+									"key": "price[lte]",
+									"value": "700"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "One Tour",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/tours/5c88fa8cf4afda39709c2955",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"tours",
+								"5c88fa8cf4afda39709c2955"
+							]
+						},
+						"description": "Retrieve One Tour By ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Tour",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Best of Paris",
+									"type": "text"
+								},
+								{
+									"key": "duration",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "maxGroupSize",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "difficulty",
+									"value": "easy",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "499",
+									"type": "text"
+								},
+								{
+									"key": "summary",
+									"value": "A wonderful tour of paris. ",
+									"type": "text"
+								},
+								{
+									"key": "startLocation[type]",
+									"value": "Point",
+									"type": "text"
+								},
+								{
+									"key": "startLocation[coordinates][0]",
+									"value": "2.3522",
+									"type": "text"
+								},
+								{
+									"key": "imageCover",
+									"type": "file",
+									"src": "/C:/Users/Pinda/Downloads/book-3.jpg"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": [
+										"/C:/Users/Pinda/Downloads/Avatar_2.jpg",
+										"/C:/Users/Pinda/Downloads/Avatar_3.jpg",
+										"/C:/Users/Pinda/Downloads/Avatar_4.jpg"
+									]
+								},
+								{
+									"key": "startLocation[coordinates][1]",
+									"value": "48.8566",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/tours",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"tours"
+							]
+						},
+						"description": "Create A Tour By sending JSON request. Requires Login credentials and Json web token signature."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Tour",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"Best of welly\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/tours/6671f71dceba9137e8832a32",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"tours",
+								"6671f71dceba9137e8832a32"
+							]
+						},
+						"description": "Update A Tour. Requires Json web token signature and fields to update. "
+					},
+					"response": []
+				},
+				{
+					"name": "Top 5 Cheap",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/tours/top-5-cheap",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"tours",
+								"top-5-cheap"
+							]
+						},
+						"description": "End point to retrieve the five cheapest tours. "
+					},
+					"response": []
+				},
+				{
+					"name": "Tour Stats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/tours/tour-stats",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"tours",
+								"tour-stats"
+							]
+						},
+						"description": "End point to retrieve meaningful statistics on tours. "
+					},
+					"response": []
+				},
+				{
+					"name": "Monthly Plan",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/tours/monthly-plan/2021",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"tours",
+								"monthly-plan",
+								"2021"
+							]
+						},
+						"description": "End point to retrieve tours within a monthly timeline. A year is required for the url paramter. "
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Tour",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/tours/6671f71dceba9137e8832a32",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"tours",
+								"6671f71dceba9137e8832a32"
+							]
+						},
+						"description": "Delete a tour. Requires TourId and Login Credentials and Json Web Token."
+					},
+					"response": []
+				},
+				{
+					"name": "Tours Within",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/tours/tours-within/400/center/26.743447, -80.248520/unit/mi",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"tours",
+								"tours-within",
+								"400",
+								"center",
+								"26.743447, -80.248520",
+								"unit",
+								"mi"
+							]
+						},
+						"description": "Find Tours within a certain radius. This end point requires a distance in kilometers or miles, lattitude, longitude center point and a unit (km or mi)."
+					},
+					"response": []
+				}
+			],
+			"description": "Routes Regarding retrieving and creating tours. All End Points require json web token."
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\": \"alex@exact.com\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/users/forgotPassword",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users",
+								"forgotPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/users",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete One User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/users/65b1a54d63e4180dac73516f",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users",
+								"65b1a54d63e4180dac73516f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/users/",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "All users requires administrative priveleges. Deleting a user requires login credentials matching. The forgot password route initiates sending a link to reset password."
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "UpdateMe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\": \"john22@apple.com\", \"name\": \"Overtonian\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/users/updateMe",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users",
+								"updateMe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"currentPassword\": \"overton1\", \"password\": \"overton2\", \"passwordConfirm\": \"overton2\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/users/updateMyPassword",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users",
+								"updateMyPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\", pm.response.json().token); \r",
+									"console.log(pm.environment.get(\"password\"))\r",
+									"pm.test(\"Response status code is 400\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Error object has the required fields\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.error).to.exist.and.to.be.an('object');\r",
+									"    pm.expect(responseData.error).to.have.property('expose');\r",
+									"    pm.expect(responseData.error).to.have.property('statusCode');\r",
+									"    pm.expect(responseData.error).to.have.property('status');\r",
+									"    pm.expect(responseData.error).to.have.property('body');\r",
+									"    pm.expect(responseData.error).to.have.property('type');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Message is an empty string\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.message).to.be.an('string').that.is.empty;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Stack is an empty string\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.stack).to.equal(\"\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\": \"chris@example.com\", \"password\": \"test1234\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/users/login",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\", pm.response.json().token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"password\": \"johnbell\", \"passwordConfirm\": \"johnbell\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/users/resetPassword/145cba43460d4f612c9d73af0366179a1cd9686c95e7a882c42cf3ab99a4cf7e",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users",
+								"resetPassword",
+								"145cba43460d4f612c9d73af0366179a1cd9686c95e7a882c42cf3ab99a4cf7e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign Up",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\", pm.response.json().token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"John\", \"email\": \"overton@bell.com\", \"password\": \"pindar77!\", \"passwordConfirm\": \"pindar77!\", \"role\": \"user\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/users/signup",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/users/deleteMe",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users",
+								"deleteMe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ME",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/users/me",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Authentication routes for signing up, logging in, updating password, updating credentials and deleting profile."
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "Post Review",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"review\": \"Loved it\", \"rating\": 4, \"tour\": \"5c88fa8cf4afda39709c2955\", \"user\": \"65b17e1e915d252098423d07\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/reviews",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Reviews General",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/reviews?rating=4",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "rating",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Review",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/reviews/65b5b9832fce554208a5ad4b",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"reviews",
+								"65b5b9832fce554208a5ad4b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Review",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"review\": \"What a terrible tour!\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/reviews/5c8a359914eb5c17645c910a",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"reviews",
+								"5c8a359914eb5c17645c910a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "One Review",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/reviews/5c8a359914eb5c17645c910a",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"reviews",
+								"5c8a359914eb5c17645c910a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tours/Reviews",
+			"item": [
+				{
+					"name": "Nested Tour Review",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"rating\": 4, \"review\": \"Just Horrible Hated it. Loved it I can't decide \"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/tours/5c88fa8cf4afda39709c2951/reviews",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"tours",
+								"5c88fa8cf4afda39709c2951",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Reviews Of Tour",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/tours/5c88fa8cf4afda39709c2951/reviews",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"tours",
+								"5c88fa8cf4afda39709c2951",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bookings",
+			"item": [
+				{
+					"name": "All Bookings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjOGExZDViMDE5MGIyMTQzNjBkYzA1NyIsImlhdCI6MTcxODcyNTg0OCwiZXhwIjoxNzI2NTAxODQ4fQ.4FG8Xg4e5-COUsKdXko-tKMzsLFQYcODls4o10ygpME",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/bookings",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Booking",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/bookings/6671cb257f0e7a41302dd6a9",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"bookings",
+								"6671cb257f0e7a41302dd6a9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Booking (API)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"tour\": \"5c88fa8cf4afda39709c2955\", \"user\": \"5c8a20d32f8fb814b56fa187\", \"price\": 599}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/bookings",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Booking",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"price\": 299}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/bookings/6671feeebaec030eacb8c203",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"bookings",
+								"6671feeebaec030eacb8c203"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Booking",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/bookings/{booking_id}",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"bookings",
+								"{booking_id}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
